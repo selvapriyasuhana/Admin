@@ -74,7 +74,7 @@ exports.Delete = async (req, res) => {
     if (deletedCount === 0) {
       return res.json({
         status: "Error",
-        message: "Staff detail deleted",
+        message: "please check your username",
       });
     }
     res.json({
