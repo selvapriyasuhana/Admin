@@ -52,7 +52,7 @@ exports.update = async (req, res) => {
     if (!admin) {
       return res.json({
         status: "Error",
-        message: "Staff details missin",
+        message: "username incorrect",
       });
     }
     res.json({
