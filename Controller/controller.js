@@ -38,8 +38,11 @@ exports.view = async (req, res) => {
   }
 };
 
+
 exports.update = async (req, res) => {
   try {
+    const { username } = req.params;
+
     const adminData = {
       Name: req.body.Name,
       Age: req.body.Age,
@@ -47,18 +50,26 @@ exports.update = async (req, res) => {
       DOB: req.body.DOB,
       Contact: req.body.Contact,
       email: req.body.email,
+      password: req.body.password,
     };
-    const admin = await service.Service_update(req.params.username, adminData);
-    if (!admin) {
+
+    if (adminData.password) {
+      adminData.password = cryptr.encrypt(adminData.password);
+    }
+
+    const updatedAdmin = await service.Service_update(username, adminData);
+
+    if (!updatedAdmin) {
       return res.json({
         status: "Error",
-        message: "username incorrect",
+        message: "Username incorrect or update failed",
       });
     }
+
     res.json({
       status: "Success",
-      message: "Staff  details added successfully",
-      data: admin,
+      message: "Staff details updated successfully",
+      data: updatedAdmin,
     });
   } catch (error) {
     res.status(500).json({
