@@ -41,9 +41,19 @@ router.post("/signin", async (req, res) => {
   }
 });
 
-router.post("/register", async (req, res) => {
+router.post("/staff/register", async (req, res) => {
   try {
-    const { password, username, usertype } = req.body;
+    const {
+      password,
+      username,
+      usertype,
+      Name,
+      Age,
+      Gender,
+      DOB,
+      Contact,
+      email,
+    } = req.body;
 
     const encryptedPassword = cryptr.encrypt(password);
 
@@ -51,6 +61,12 @@ router.post("/register", async (req, res) => {
       password: encryptedPassword,
       username,
       usertype,
+      Name,
+      Age,
+      Gender,
+      DOB,
+      Contact,
+      email,
     });
 
     await admin.save();
