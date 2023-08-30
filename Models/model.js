@@ -36,15 +36,11 @@ var Schema = mongoose.Schema({
     type: String,
     required: false,
   },
-  usertype: {
-    type: [
-      {
-        required: true,
-        type: String,
-        enum: ["Admin", "HR"],
-      },
-    ],
+    usertype: {
+    type: [String],
+    enum: ["Admin", "HR", "Staff"],
     default: ["Admin"],
+    required: true,
   },
 });
 
