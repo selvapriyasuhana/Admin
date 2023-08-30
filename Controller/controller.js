@@ -22,7 +22,7 @@ exports.index = async (req, res) => {
 exports.view = async (req, res) => {
   try {
     const admin = await service.Service_view(req.params.username);
-    if (!staff) {
+    if (!admin) {
       return res.json({
         status: "Error",
         message: "User not found",
