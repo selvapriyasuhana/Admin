@@ -1,4 +1,7 @@
 const service = require("../Service/service.js");
+const Cryptr = require("cryptr");
+const cryptr = new Cryptr("priya");
+
 
 exports.index = async (req, res) => {
   try {
